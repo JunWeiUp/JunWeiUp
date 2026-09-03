@@ -12,6 +12,8 @@ The banner, information cards and project cards are original SVG assets generate
 python3 scripts/build_assets.py
 ```
 
+The PasswordVault project cards embed `assets/passwordvault-icon.png`, exported from the main PasswordVault repository. Keep the card copy and links aligned with the public developer-preview status.
+
 ## Capabilities card
 
 The “What I build” / “我能做什么” card describes the work represented by the projects: native productivity tools, connected apps with local sync, and practical web applications. The neighboring toolbox card lists the technologies used to build them.

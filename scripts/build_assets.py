@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build bilingual profile SVGs from project capabilities and local copy."""
 import argparse
+import base64
 from html import escape
 from pathlib import Path
 
@@ -29,7 +30,7 @@ COPY = {
         "toolbox_alt": "macOS: Swift and AppKit. Mobile: Flutter and Dart. Web: React and TypeScript.",
         "projects": {
             "clipy": ("01 / NATIVE PRODUCTIVITY", "Clipy", "Clipboard, screenshots & local sync.", "A native Mac app, connected to Android.", "Swift · AppKit · Flutter"),
-            "vault": ("02 / PERSONAL UTILITIES", "Password Vault", "Passwords, TOTP & local vaults.", "A Flutter app with WebDAV backup.", "Releases & installation"),
+            "vault": ("02 / LOCAL-FIRST VAULT", "PasswordVault", "Passwords, TOTP & notes, on your devices.", "An English-first Flutter developer preview.", "Android · Web · Chromium"),
         },
     },
     "zh-CN": {
@@ -48,7 +49,7 @@ COPY = {
         "toolbox_alt": "macOS：Swift 与 AppKit。移动端：Flutter 与 Dart。Web：React 与 TypeScript。",
         "projects": {
             "clipy": ("01 / 原生效率工具", "Clipy", "剪贴板、截图与局域网同步。", "原生 Mac 应用，连接 Android 设备。", "Swift · AppKit · Flutter"),
-            "vault": ("02 / 日常实用工具", "Password Vault", "密码、TOTP 双重认证与本地保管库。", "基于 Flutter，支持 WebDAV 备份。", "发布与安装"),
+            "vault": ("02 / 本地优先保管库", "PasswordVault", "密码、TOTP 与笔记，本地优先。", "默认英文，支持中文的 Flutter 开发预览版。", "Android · Web · Chromium"),
         },
     },
 }
@@ -101,6 +102,10 @@ def project(t, data):
     body = panel(t, 480, 192)
     body += text(24, 30, label, 10, t["muted"], 600, extra='letter-spacing="1.2"')
     body += text(24, 72, name, 28, t["accent"], 650)
+    if name == "PasswordVault":
+        icon = base64.b64encode((ASSETS / "passwordvault-icon.png").read_bytes()).decode("ascii")
+        body += '<defs><clipPath id="vault-icon-mask"><rect x="400" y="40" width="56" height="56" rx="10"/></clipPath></defs>'
+        body += f'<image x="400" y="40" width="56" height="56" clip-path="url(#vault-icon-mask)" href="data:image/png;base64,{icon}"/>'
     body += text(24, 106, first, 16, t["ink"])
     body += text(24, 132, second, 15, t["muted"])
     body += f'<line x1="24" x2="456" y1="150" y2="150" stroke="{t["line"]}"/>'
