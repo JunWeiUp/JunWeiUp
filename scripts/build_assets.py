@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
-"""Build self-contained profile SVGs. --refresh fetches public GitHub data only."""
+"""Build bilingual profile SVGs from project capabilities and local copy."""
 import argparse
-import json
-from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
-from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "profile-data.json"
 ASSETS = ROOT / "assets"
-USER = "JunWeiUp"
 
 THEMES = {
     "light": dict(bg="#ffffff", line="#d8e1ed", ink="#18273d", muted="#536880", accent="#1667d9", soft="#edf4ff", green="#087b69"),
@@ -22,10 +17,13 @@ COPY = {
         "greeting": "Hello, I'm Kim.",
         "tagline": "I build tools for everyday work.",
         "platforms": "macOS   /   MOBILE   /   WEB",
-        "stats_title": "Public GitHub",
-        "stats_labels": ("Public repos", "Non-fork repos", "Stars*"),
-        "stats_note": "* Public non-fork repos · Snapshot {date}",
-        "stats_alt": "Public GitHub repository snapshot",
+        "capabilities_title": "What I build",
+        "capabilities": (
+            ("Native tools", "Clipboard · screenshots · OCR"),
+            ("Connected apps", "Local sync · Mac + Android"),
+            ("Web apps", "Interfaces · everyday utilities"),
+        ),
+        "capabilities_alt": "What I build: native productivity tools, apps with local sync across devices, and practical web applications.",
         "toolbox_title": "Build across platforms",
         "mobile": "Mobile",
         "toolbox_alt": "macOS: Swift and AppKit. Mobile: Flutter and Dart. Web: React and TypeScript.",
@@ -38,10 +36,13 @@ COPY = {
         "greeting": "你好，我是 Kim。",
         "tagline": "为日常工作，打造顺手的工具。",
         "platforms": "macOS   /   移动端   /   WEB",
-        "stats_title": "GitHub 公开数据",
-        "stats_labels": ("公开仓库", "非 Fork 仓库", "Star 数*"),
-        "stats_note": "* 仅统计公开非 Fork 仓库 · 快照 {date}",
-        "stats_alt": "GitHub 公开仓库数据快照",
+        "capabilities_title": "我能做什么",
+        "capabilities": (
+            ("原生效率工具", "剪贴板 · 截图 · 文字识别"),
+            ("跨设备协作", "局域网同步 · 移动端体验"),
+            ("Web 应用", "交互界面 · 实用工具"),
+        ),
+        "capabilities_alt": "我能做什么：原生效率工具、支持局域网同步的跨设备应用，以及实用的 Web 应用。",
         "toolbox_title": "跨平台开发",
         "mobile": "移动端",
         "toolbox_alt": "macOS：Swift 与 AppKit。移动端：Flutter 与 Dart。Web：React 与 TypeScript。",
@@ -51,30 +52,6 @@ COPY = {
         },
     },
 }
-
-
-def refresh():
-    # This public endpoint deliberately excludes private repositories.
-    repos = []
-    for page in range(1, 100):
-        req = Request(f"https://api.github.com/users/{USER}/repos?type=owner&per_page=100&page={page}", headers={"User-Agent": "JunWeiUp-profile", "Accept": "application/vnd.github+json"})
-        with urlopen(req, timeout=30) as response:
-            batch = json.load(response)
-        if not isinstance(batch, list):
-            raise ValueError("Expected a GitHub repository list")
-        repos.extend(r for r in batch if not r.get("private", True))
-        if len(batch) < 100:
-            break
-    else:
-        raise RuntimeError("Repository pagination limit reached; snapshot was not changed")
-    non_forks = [r for r in repos if not r["fork"]]
-    data = {
-        "as_of": datetime.now(timezone.utc).date().isoformat(),
-        "public_repositories": len(repos),
-        "non_fork_repositories": len(non_forks),
-        "stars_on_public_non_fork_repositories": sum(r["stargazers_count"] for r in non_forks),
-    }
-    DATA.write_text(json.dumps(data, indent=2) + "\n")
 
 
 def text(x, y, value, size, fill, weight=400, anchor="start", extra=""):
@@ -101,16 +78,13 @@ def header(t, copy):
     return svg(1000, 218, f'JunWeiUp — {copy["greeting"]} {copy["tagline"]}', body)
 
 
-def stats(t, data, copy):
-    body = panel(t, 480, 174)
-    body += text(24, 33, copy["stats_title"], 19, t["ink"], 650)
-    labels = copy["stats_labels"]
-    cols = [(24, data["public_repositories"], labels[0]), (178, data["non_fork_repositories"], labels[1]), (348, data["stars_on_public_non_fork_repositories"], labels[2])]
-    for x, count, label in cols:
-        body += text(x, 88, count, 34, t["accent"], 650)
-        body += text(x, 112, label, 13, t["muted"])
-    body += text(24, 151, copy["stats_note"].format(date=data["as_of"]), 11, t["muted"])
-    return svg(480, 174, copy["stats_alt"], body)
+def capabilities(t, copy):
+    body = panel(t, 480, 174) + text(24, 33, copy["capabilities_title"], 19, t["ink"], 650)
+    for y, (label, detail) in zip((70, 105, 140), copy["capabilities"]):
+        body += f'<path d="M25 {y-5} L29 {y-1} L36 {y-9}" fill="none" stroke="{t["accent"]}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
+        body += text(45, y, label, 15, t["ink"], 550)
+        body += text(188, y, detail, 13, t["muted"])
+    return svg(480, 174, copy["capabilities_alt"], body)
 
 
 def toolbox(t, copy):
@@ -137,22 +111,18 @@ def project(t, data):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--refresh", action="store_true")
-    args = parser.parse_args()
-    if args.refresh:
-        refresh()
-    data = json.loads(DATA.read_text())
+    parser.parse_args()
     ASSETS.mkdir(exist_ok=True)
     count = 0
     for locale, copy in COPY.items():
         suffix = "" if locale == "en" else f"-{locale}"
         for name, theme in THEMES.items():
-            files = {"header": header(theme, copy), "stats": stats(theme, data, copy), "toolbox": toolbox(theme, copy)}
+            files = {"header": header(theme, copy), "capabilities": capabilities(theme, copy), "toolbox": toolbox(theme, copy)}
             files.update({key: project(theme, value) for key, value in copy["projects"].items()})
             for key, value in files.items():
                 (ASSETS / f"{key}{suffix}-{name}.svg").write_text(value)
                 count += 1
-    print(f"Built {count} SVG assets across {len(COPY)} languages. Public data snapshot: {data['as_of']}")
+    print(f"Built {count} SVG assets across {len(COPY)} languages.")
 
 
 if __name__ == "__main__":

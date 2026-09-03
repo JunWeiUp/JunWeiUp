@@ -27,12 +27,10 @@
 </p>
 
 <p>
-  <a href="https://github.com/JunWeiUp?tab=repositories">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
-      <img src="./assets/stats-light.svg" width="400" alt="Dated snapshot of public GitHub repositories. Stars count public non-fork repositories only." />
-    </picture>
-  </a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/capabilities-dark.svg" />
+    <img src="./assets/capabilities-light.svg" width="400" alt="What I build: native productivity tools, apps with local sync across devices, and practical web applications." />
+  </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/toolbox-dark.svg" />
     <img src="./assets/toolbox-light.svg" width="400" alt="macOS: Swift and AppKit. Mobile: Flutter and Dart. Web: React and TypeScript." />

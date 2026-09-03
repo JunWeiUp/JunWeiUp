@@ -27,12 +27,10 @@
 </p>
 
 <p>
-  <a href="https://github.com/JunWeiUp?tab=repositories">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-zh-CN-dark.svg" />
-      <img src="./assets/stats-zh-CN-light.svg" width="400" alt="GitHub 公开仓库数据快照；Star 数仅统计公开的非 Fork 仓库，日期标注在卡片内。" />
-    </picture>
-  </a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/capabilities-zh-CN-dark.svg" />
+    <img src="./assets/capabilities-zh-CN-light.svg" width="400" alt="我能做什么：原生效率工具、支持局域网同步的跨设备应用，以及实用的 Web 应用。" />
+  </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/toolbox-zh-CN-dark.svg" />
     <img src="./assets/toolbox-zh-CN-light.svg" width="400" alt="技术方向：macOS 使用 Swift 与 AppKit；移动端使用 Flutter 与 Dart；Web 使用 React 与 TypeScript。" />

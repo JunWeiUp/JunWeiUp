@@ -12,17 +12,10 @@ The banner, information cards and project cards are original SVG assets generate
 python3 scripts/build_assets.py
 ```
 
-## Public data snapshot
+## Capabilities card
 
-The statistics card is a dated snapshot, not a live counter. It counts public repositories, public non-fork repositories, and stars received by public non-fork repositories. Non-fork does not imply that all code in a repository is original. Private repositories and contributions are not queried or displayed.
+The “What I build” / “我能做什么” card describes the work represented by the projects: native productivity tools, connected apps with local sync, and practical web applications. The neighboring toolbox card lists the technologies used to build them.
 
-To refresh from GitHub's public API and rebuild the images:
+Update the `capabilities` entries in `COPY` for both languages when changing the focus. Keep these descriptions tied to actual project functionality, then rebuild the assets with the command above. The generator runs entirely from local copy.
 
-```sh
-python3 scripts/build_assets.py --refresh
-git add profile-data.json assets/
-git commit -m "Refresh public profile snapshot"
-git push
-```
-
-No third-party statistics image service or scheduled workflow is required. The reference for the introduction / statistics / selected-project structure was [Anurag Hazra's profile](https://github.com/anuraghazra). Its artwork and copy were not reused.
+The reference for the overall introduction / selected-project structure was [Anurag Hazra's profile](https://github.com/anuraghazra). Its artwork and copy were not reused.
