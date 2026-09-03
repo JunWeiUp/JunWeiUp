@@ -14,7 +14,7 @@
 
 - 🛠️ 我是 **Kim / JunWeiUp**，开发 macOS、移动端和 Web 应用。
 - 📋 最近在打磨 **[Clipy](https://github.com/JunWeiUp/Clipy)**：把剪贴板、截图与跨设备协作融入日常工作。
-- 🧩 我的项目还包括 **[Password Vault](https://github.com/JunWeiUp/PasswordVault-install)** 和英语语法学习应用 **[grammarPath](https://github.com/JunWeiUp/grammerPath)**。
+- 🧩 我的项目还包括 **[Password Vault](https://github.com/JunWeiUp/PasswordVault-install)**，一个本地密码与双重认证管理工具。
 - 💡 关注**原生体验、跨平台开发与本地数据**，喜欢把功能和使用细节一起打磨。
 - 💬 欢迎交流工具开发、产品体验与开源项目：[在这里聊聊](https://github.com/JunWeiUp/JunWeiUp/issues)。
 
@@ -51,22 +51,7 @@
     </picture>
   </a>
 </p>
-<p>
-  <a href="https://github.com/JunWeiUp/grammerPath">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/grammar-dark.svg" />
-      <img src="./assets/grammar-light.svg" width="400" alt="grammarPath：使用 React 和 TypeScript 构建的英语语法学习应用，包含学习路径与交互练习。" />
-    </picture>
-  </a>
-  <a href="https://github.com/JunWeiUp?tab=repositories">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/explore-dark.svg" />
-      <img src="./assets/explore-light.svg" width="400" alt="更多项目：查看我的工具、实验与开源仓库。" />
-    </picture>
-  </a>
-</p>
-
-**[下载 Clipy](https://github.com/JunWeiUp/Clipy/releases)** · **[Password Vault 发布与安装](https://github.com/JunWeiUp/PasswordVault-install)** · **[查看 grammarPath 源码](https://github.com/JunWeiUp/grammerPath)**
+**[下载 Clipy](https://github.com/JunWeiUp/Clipy/releases)** · **[Password Vault 发布与安装](https://github.com/JunWeiUp/PasswordVault-install)** · **[更多项目 →](https://github.com/JunWeiUp?tab=repositories)**
 
 <details>
   <summary><b>看一眼 Clipy · A closer look</b></summary>

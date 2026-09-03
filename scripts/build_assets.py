@@ -89,8 +89,6 @@ def toolbox(t):
 PROJECTS = {
     "clipy": ("01 / NATIVE PRODUCTIVITY", "Clipy", "Clipboard, screenshots & local sync.", "A native Mac app, connected to Android.", "Swift · AppKit · Flutter"),
     "vault": ("02 / PERSONAL UTILITIES", "Password Vault", "Passwords, TOTP & local vaults.", "A Flutter app with WebDAV backup.", "Releases & installation"),
-    "grammar": ("03 / LEARNING ON THE WEB", "grammarPath", "English grammar, one lesson at a time.", "Learning paths & interactive practice.", "React · TypeScript"),
-    "explore": ("04 / KEEP EXPLORING", "More on GitHub", "Small tools, experiments & open source.", "Explore the projects behind the profile.", "Browse repositories"),
 }
 
 
@@ -120,7 +118,7 @@ def main():
         files.update({key: project(theme, value) for key, value in PROJECTS.items()})
         for key, value in files.items():
             (ASSETS / f"{key}-{name}.svg").write_text(value)
-    print(f"Built 14 SVG assets. Public data snapshot: {data['as_of']}")
+    print(f"Built {(3 + len(PROJECTS)) * len(THEMES)} SVG assets. Public data snapshot: {data['as_of']}")
 
 
 if __name__ == "__main__":
