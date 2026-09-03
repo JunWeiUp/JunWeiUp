@@ -65,7 +65,7 @@
       <img src="./assets/clipy-search.png" width="560" alt="Clipy's global search in the Chinese UI, showing filters, clipboard history, and a content preview." />
     </a>
   </p>
-  <p>Built with Swift / AppKit on macOS and Flutter on mobile. Clipy also includes screenshot annotation, OCR, and local network sync. <a href="https://github.com/JunWeiUp/Clipy/blob/master/README.md">Explore the features and implementation →</a></p>
+  <p>Built with Swift / AppKit on macOS and Flutter on mobile. Clipy also includes screenshot annotation, OCR, and local network sync. <a href="https://github.com/JunWeiUp/Clipy/blob/main/README.md">Explore the features and implementation →</a></p>
 </details>
 
 <br />

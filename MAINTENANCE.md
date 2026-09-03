@@ -10,9 +10,13 @@ The banner, information cards and project cards are original SVG assets generate
 
 ```sh
 python3 scripts/build_assets.py
+python3 scripts/test_build_assets.py
 ```
 
-The PasswordVault project cards embed `assets/passwordvault-icon.png`, exported from the main PasswordVault repository. Keep the card copy and links aligned with the public developer-preview status.
+Both project cards embed local PNG icons as data URLs, so GitHub does not need to fetch external images from inside an SVG. Their icons share a 56 × 56 slot at the top right, with a 10 px corner radius, in both languages and themes. Keep `PROJECT_ICONS` in `scripts/build_assets.py` in sync when adding project cards; the tests check embedded icon content and generated card consistency.
+
+- Clipy uses `assets/clipy-icon.png`, a 128 × 128 export of [`JunWeiUp/Clipy/assets/branding/icon-master.png`](https://github.com/JunWeiUp/Clipy/blob/main/assets/branding/icon-master.png). Use the full-bleed artwork: the card supplies its rounded mask, so the app icon's outer transparent padding is not needed here.
+- PasswordVault uses `assets/passwordvault-icon.png`, exported from the main PasswordVault repository. Keep its card copy and links aligned with the public developer-preview status.
 
 ## Capabilities card
 

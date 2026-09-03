@@ -8,6 +8,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
+PROJECT_ICONS = {
+    "clipy": "clipy-icon.png",
+    "vault": "passwordvault-icon.png",
+}
+
 THEMES = {
     "light": dict(bg="#ffffff", line="#d8e1ed", ink="#18273d", muted="#536880", accent="#1667d9", soft="#edf4ff", green="#087b69"),
     "dark": dict(bg="#0d1117", line="#303c4d", ink="#e6edf3", muted="#a0aec0", accent="#79adff", soft="#142640", green="#72d5bf"),
@@ -97,15 +102,14 @@ def toolbox(t, copy):
     return svg(480, 174, copy["toolbox_alt"], body)
 
 
-def project(t, data):
+def project(t, key, data):
     label, name, first, second, stack = data
     body = panel(t, 480, 192)
     body += text(24, 30, label, 10, t["muted"], 600, extra='letter-spacing="1.2"')
     body += text(24, 72, name, 28, t["accent"], 650)
-    if name == "PasswordVault":
-        icon = base64.b64encode((ASSETS / "passwordvault-icon.png").read_bytes()).decode("ascii")
-        body += '<defs><clipPath id="vault-icon-mask"><rect x="400" y="40" width="56" height="56" rx="10"/></clipPath></defs>'
-        body += f'<image x="400" y="40" width="56" height="56" clip-path="url(#vault-icon-mask)" href="data:image/png;base64,{icon}"/>'
+    icon = base64.b64encode((ASSETS / PROJECT_ICONS[key]).read_bytes()).decode("ascii")
+    body += f'<defs><clipPath id="{key}-icon-mask"><rect x="400" y="40" width="56" height="56" rx="10"/></clipPath></defs>'
+    body += f'<image x="400" y="40" width="56" height="56" clip-path="url(#{key}-icon-mask)" href="data:image/png;base64,{icon}"/>'
     body += text(24, 106, first, 16, t["ink"])
     body += text(24, 132, second, 15, t["muted"])
     body += f'<line x1="24" x2="456" y1="150" y2="150" stroke="{t["line"]}"/>'
@@ -123,7 +127,7 @@ def main():
         suffix = "" if locale == "en" else f"-{locale}"
         for name, theme in THEMES.items():
             files = {"header": header(theme, copy), "capabilities": capabilities(theme, copy), "toolbox": toolbox(theme, copy)}
-            files.update({key: project(theme, value) for key, value in copy["projects"].items()})
+            files.update({key: project(theme, key, value) for key, value in copy["projects"].items()})
             for key, value in files.items():
                 (ASSETS / f"{key}{suffix}-{name}.svg").write_text(value)
                 count += 1

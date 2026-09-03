@@ -65,7 +65,7 @@
       <img src="./assets/clipy-search.png" width="560" alt="Clipy 全局搜索的真实界面，展示内容类型、来源和时间筛选，以及历史记录与内容预览。" />
     </a>
   </p>
-  <p>macOS 使用 Swift / AppKit，移动端使用 Flutter。项目同时包含截图标注、OCR 与局域网同步功能。<a href="https://github.com/JunWeiUp/Clipy/blob/master/README_ZH.md">查看功能与实现说明 →</a></p>
+  <p>macOS 使用 Swift / AppKit，移动端使用 Flutter。项目同时包含截图标注、OCR 与局域网同步功能。<a href="https://github.com/JunWeiUp/Clipy/blob/main/README_ZH.md">查看功能与实现说明 →</a></p>
 </details>
 
 <br />
