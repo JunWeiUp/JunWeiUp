@@ -18,7 +18,7 @@
 
 - 🛠️ 我是 **Kim / JunWeiUp**，开发 macOS、移动端和 Web 应用。
 - 📋 最近在打磨 **[Clipy](https://github.com/JunWeiUp/Clipy)**：把剪贴板历史、截图与局域网同步融入日常工作。
-- 🧩 我的项目还包括 **[Password Vault](https://github.com/JunWeiUp/PasswordVault-install)**，一个本地密码与双重认证管理工具。
+- 🧩 我的项目还包括 **[PasswordVault](https://github.com/JunWeiUp/PasswordVault)**，一个管理密码、TOTP 与笔记的 Flutter 本地优先保管库，默认英文、支持中文，目前为开发预览版。
 - 💡 关注**原生体验、跨平台开发与本地数据**，喜欢把功能和使用细节一起打磨。
 - 💬 欢迎交流工具开发、产品体验与开源项目：**[在这里聊聊](https://github.com/JunWeiUp/JunWeiUp/issues)**。
 
@@ -46,15 +46,15 @@
       <img src="./assets/clipy-zh-CN-light.svg" width="400" alt="Clipy：原生 macOS 剪贴板与截图工具，支持和 Android 进行局域网同步。" />
     </picture>
   </a>
-  <a href="https://github.com/JunWeiUp/PasswordVault-install">
+  <a href="https://github.com/JunWeiUp/PasswordVault">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./assets/vault-zh-CN-dark.svg" />
-      <img src="./assets/vault-zh-CN-light.svg" width="400" alt="Password Vault：基于 Flutter 的密码与 TOTP 管理应用，提供本地保管库与 WebDAV 备份。此链接为发布与安装仓库。" />
+      <img src="./assets/vault-zh-CN-light.svg" width="400" alt="PasswordVault：支持英文和中文的 Flutter 本地优先保管库，包含 Android、Web 与 Chromium 扩展，目前为开源开发预览版。" />
     </picture>
   </a>
 </p>
 
-**[下载 Clipy](https://github.com/JunWeiUp/Clipy/releases)** · **[Password Vault 发布与安装](https://github.com/JunWeiUp/PasswordVault-install)** · **[更多项目 →](https://github.com/JunWeiUp?tab=repositories)**
+**[下载 Clipy](https://github.com/JunWeiUp/Clipy/releases)** · **[PasswordVault 源码与预览](https://github.com/JunWeiUp/PasswordVault)** · **[更多项目 →](https://github.com/JunWeiUp?tab=repositories)**
 
 <details>
   <summary><b>看一眼 Clipy</b></summary>

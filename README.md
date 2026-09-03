@@ -18,7 +18,7 @@
 
 - 🛠️ I'm **Kim / JunWeiUp**, building apps for macOS, mobile, and the web.
 - 📋 Currently refining **[Clipy](https://github.com/JunWeiUp/Clipy)**: clipboard history, screenshots, and local sync for everyday work.
-- 🧩 I also work on **[Password Vault](https://github.com/JunWeiUp/PasswordVault-install)**, a local password and two-factor authentication manager.
+- 🧩 I also work on **[PasswordVault](https://github.com/JunWeiUp/PasswordVault)**, an English/Chinese Flutter vault for passwords, TOTP codes, and notes — currently a developer preview.
 - 💡 I care about **native experiences, cross-platform development, and local data**, with attention to the details that make tools easier to use.
 - 💬 Let's talk about useful tools, product design, and open source: **[start a conversation](https://github.com/JunWeiUp/JunWeiUp/issues)**.
 
@@ -46,15 +46,15 @@
       <img src="./assets/clipy-light.svg" width="400" alt="Clipy: a native macOS clipboard and screenshot tool with local network sync to Android." />
     </picture>
   </a>
-  <a href="https://github.com/JunWeiUp/PasswordVault-install">
+  <a href="https://github.com/JunWeiUp/PasswordVault">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./assets/vault-dark.svg" />
-      <img src="./assets/vault-light.svg" width="400" alt="Password Vault: a Flutter password and TOTP manager with local vaults and WebDAV backup. Links to releases and installation." />
+      <img src="./assets/vault-light.svg" width="400" alt="PasswordVault: an English/Chinese Flutter vault for Android, Web, and Chromium. Open-source developer preview." />
     </picture>
   </a>
 </p>
 
-**[Download Clipy](https://github.com/JunWeiUp/Clipy/releases)** · **[Get Password Vault](https://github.com/JunWeiUp/PasswordVault-install)** · **[More projects →](https://github.com/JunWeiUp?tab=repositories)**
+**[Download Clipy](https://github.com/JunWeiUp/Clipy/releases)** · **[Explore PasswordVault](https://github.com/JunWeiUp/PasswordVault)** · **[More projects →](https://github.com/JunWeiUp?tab=repositories)**
 
 <details>
   <summary><b>A closer look at Clipy</b></summary>
